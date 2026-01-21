@@ -30,7 +30,7 @@ class Solution:
         in_queue = [False] * (ROWS * COLS) # 记录格子 i 是否在队列中，用于 SPFA 优化
 
         def index(r, c): # 辅助函数：将二维坐标 (r, c) 转换为一维索引，方便存储在 dist 数组里
-            return r * COLS + c # 注意这里是COLS，非ROWS
+            return r * COLS + c # 注意这里是COLS，非ROWS；想想第二行的第一列，一维结果是1 * COLS + c
 
         queue = deque([0])
         in_queue[0] = True
