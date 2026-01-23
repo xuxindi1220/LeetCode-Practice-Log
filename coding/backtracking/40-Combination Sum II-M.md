@@ -19,12 +19,12 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        candidates.sort()
+        candidates.sort() # 注意排序
 
         def dfs(idx, path, cur):
             if cur == target:
                 res.append(path.copy())
-                return
+                return # 别忘了这里要返回
             for i in range(idx, len(candidates)):
                 if i > idx and candidates[i] == candidates[i - 1]:
                     continue
@@ -49,7 +49,7 @@ class Solution:
 
 
 分析：
-- 排序的作用
+- **排序**的作用
   - 去重（代码中continue的逻辑）
   - 提前剪枝（代码中break的逻辑）
 - dfs的参数idx表示从candidates的第idx开始选
@@ -62,3 +62,12 @@ class Solution:
   - i=1 → candidates[1] == candidates[0] 且 i>idx → 跳过 （此处因为选的是path里的第一个元素，而与上一个重复，所以跳过
   - i=2 → 选 2 → path=[2] → 下一层 dfs(idx=3)
   - 所以，第一层就不会重复选择同样的 1 了
+
+- 组合类回溯的两种写法（记住这个）
+  - 写法一：显式选 / 不选（二叉树）
+  dfs(i + 1, path + [x])
+  dfs(i + 1, path)
+  - 写法二：for + dfs（你现在这个）
+  for i in range(start, n):
+      dfs(i + 1, path + [nums[i]])
+  - 注意：两种不能混着用
