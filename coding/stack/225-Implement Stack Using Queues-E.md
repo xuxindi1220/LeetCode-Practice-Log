@@ -9,7 +9,7 @@
 
 
 解法：
-- 
+- stack and queue
 
 ## 1. stack and queue
 ```python
