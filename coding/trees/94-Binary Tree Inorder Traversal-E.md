@@ -41,3 +41,27 @@ class Solution:
 - TC: O(n)
 - SC: O(n)
   - 递归栈、输出数组
+
+
+## 2. iterative dfs
+```python
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        stack = []
+        cur = root
+
+        while cur or stack:
+            if cur:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop()
+                res.append(cur.val)
+                cur = cur.right
+        
+        return res
+```
+
+- TC: O(n)
+- SC: O(n)
