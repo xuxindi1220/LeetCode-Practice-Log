@@ -72,3 +72,8 @@ class Solution:
   3. 把新链表和旧链表拆开
      - 复原l1的random指针，用l2.next
      - 添加l2的next指针
+
+精简版：
+1. 复制新节点，改l1.random为新节点, l2.next为原random
+2. 更新l2.random指针
+3. 复原，改l1.random, l2.next
