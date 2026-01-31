@@ -65,3 +65,18 @@ class Solution:
 - 因为子集里的元素都是 不可变类型（int），所以浅拷贝就足够了，不需要深拷贝
 
 2. 若将选(3行代码)和不选(1行代码)调换位置，不会影响本题通过性。只是res里子集元素顺序会不一样。
+
+```python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        def dfs(i, path):
+            res.append(path.copy())
+
+            for j in range(i, len(nums)):
+                path.append(nums[j])
+                dfs(j + 1, path)
+                path.pop()
+        dfs(0, [])
+        return res
+```
